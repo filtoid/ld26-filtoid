@@ -4,6 +4,7 @@ function Level1(_owner){
 	this.mouseMove = Level1MouseMove;
 	this.click = Level1Click;
 	this.owner = _owner;
+	this.see = Level1See;
 }
 
 function Level1Draw(ctx){
@@ -27,5 +28,8 @@ function Level1Click(_x,_y){
 }
 
 function Level1MouseMove(_x,_y){
+}
 
+function Level1See(){
+	// initiate the see
 }

@@ -4,8 +4,6 @@ function Game(){
 	this.click = GameClick;
 	this.mouseMove = GameMouseMove;
 	this.curLevel = new Level1(this);
-
-	this.see = Level1See;
 }
 
 function GameDraw(ctx){
@@ -24,6 +22,3 @@ function GameMouseMove(_x,_y){
 	this.curLevel.mouseMove(_x,_y);
 }
 
-function Level1See(){
-	// initiate the see
-}
