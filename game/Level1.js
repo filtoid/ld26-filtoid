@@ -64,18 +64,17 @@ function Level1ActivateButtons(){
 
 function Level1Click(_x,_y){
 	// If we choose to wake then we need to set the level accordingly
-	/*	ctx.fillRect(225,200,100,100);
-*/
 	if(_x>225 && _x<325 && _y>200 && _y<300 ){
 		this.owner.setLevel("FirstHurdle");
 		return;
 	}
 
 	// If we choose to sleep then we can enjoy this adventure...
-/*
-		ctx.fillStyle = "green";
-    		ctx.fillRect(325,200,100,100);
-*/
+	if(_x>325 && _x<425 && _y>200 && _y<300){
+		this.owner.addScore(10);
+		this.owner.setLevel("Level2");
+		return;
+	}
 
 }
 

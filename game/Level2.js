@@ -1,21 +1,21 @@
-function FirstHurdle(_owner){
+function Level2(_owner){
+	this.draw = Level2Draw;
+	this.update = Level2Update;
+	this.mouseMove = Level2MouseMove;
+	this.click = Level2Click;
 	this.owner = _owner;
-	this.draw = FHDraw;
-	this.update = FHUpdate;
-	this.see = FHSee;
-	this.click = FHClick;
-	this.mouseMove = FHMouseMove;
-
-	this.curText = "";//"We have hit the big conundrum of the dream - if we have not lived to dream then have we truly lived at all?";
-	this.see();
+	this.see = Level2See;
+	this.curText = "The roar of the crowd hits me first. I'm in a bar - the air is thick with the smell of sweat. I'm behind the bar, people are shouting for drinks.";
+	
 	this.oldWord = "";	
 	this.curWord = "";	
 	this.nextWord = "";
-	
-	this.showRestart = false;
+		
+	this.activateButtons = Level1ActivateButtons;
+	this.showButtons=false;
 }
 
-function FHDraw(ctx){
+function Level2Draw(ctx){
 	var oldColor = ctx.fillStyle;
 	var oldFont = ctx.font;
 	var oldAlpha = ctx.globalAlpha;
@@ -47,31 +47,22 @@ function FHDraw(ctx){
 	ctx.font = oldFont;
 }
 
-function FHUpdate(){
+function Level2Update(){
 	this.oldWord = this.curWord;
 	this.curWord = this.nextWord;
 	
 	this.nextWord = splitWordsGetFirst(this.curText);
 	this.curText = splitWordsGetRest(this.curText);
-
 }
 
-function FHSee(){
-
-	this.curText = "If we have not lived to dream then have we truly lived at all?";
+function Level2MouseMove(_x,_y){
 	
 }
 
-function FHClick(_x,_y){
-	this.showRestart = true;
-	
-	if(_x>300&& _x<500 &&  _y>50 && _y<150){
-		this.owner.setLevel("Level1");
-		return;
-	}
+function Level2Click(_x,_y){
 	
 }
 
-function FHMouseMove(_x,_y){
+function Level2See(){
 
 }
