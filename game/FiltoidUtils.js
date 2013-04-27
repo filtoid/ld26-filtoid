@@ -6,7 +6,7 @@ Please feel free to do whatever the hell you like with this code. It is free as 
 and free as in speech. If you use this code you do so at your own risk and I accept no responsibility
 whatsoever for it. 
 
-Thanks and have fun at LD25 :)
+Thanks and have fun at LD26 :)
 */
 
 /*
@@ -87,3 +87,32 @@ function FiltoidHitTest(point, isForMovement, obj){
 	
 	return didHit;
 }
+
+function splitWordsGetFirst(_str){
+	if(_str=="")
+		return "";
+	var allWords = _str.split(" ");
+		_str = "";
+	for( var i=1;i<allWords.length; i++){
+		_str += allWords[i];	
+		if(i!=allWords.length-1)
+			_str += " ";
+	}
+
+
+	return allWords[0];
+}
+
+function splitWordsGetRest(_str){
+	if(_str=="")
+		return "";
+	var allWords = _str.split(" ");
+		_str = "";
+	for( var i=1;i<allWords.length; i++){
+		_str += allWords[i];	
+		if(i!=allWords.length-1)
+			_str += " ";
+	}
+	return _str;
+}
+

@@ -1,20 +1,51 @@
+var MAX_TICK = 10;
+
 function Game(){
 	this.draw = GameDraw;
 	this.update = GameUpdate;
 	this.click = GameClick;
 	this.mouseMove = GameMouseMove;
 	this.curLevel = new Level1(this);
+	
+	this.tick = MAX_TICK;
+
 }
 
 function GameDraw(ctx){
 	this.curLevel.draw(ctx);
+
+	var oldAlpha = ctx.globalAlpha;
+
+	ctx.globalAlpha = 0.5;
+
+	ctx.fillStyle = "blue";
+    	ctx.fillRect(0,0,50,50);
+	
+	ctx.globalAlpha = oldAlpha;	
 }
 
 function GameUpdate(){
+
+	if(this.tick<=0){
+		this.tick=MAX_TICK;		
+	}else{
+		this.tick-=1;
+		return;	
+	}
+
 	this.curLevel.update();
 }
 
 function GameClick(_x,_y){
+
+	if(_x>0 && _x<50 && _y>0 && _y<50){
+		this.curLevel.see();
+		return;
+	}
+
+	
+
+	// If we click on eye then do a see
 	this.curLevel.click(_x,_y);
 }
 
