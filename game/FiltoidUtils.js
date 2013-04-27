@@ -99,7 +99,6 @@ function splitWordsGetFirst(_str){
 			_str += " ";
 	}
 
-
 	return allWords[0];
 }
 

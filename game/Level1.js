@@ -11,6 +11,8 @@ function Level1(_owner){
 	this.curWord = "";	
 	this.nextWord = "";
 		
+	this.activateButtons = Level1ActivateButtons;
+	this.showButtons=false;
 }
 
 function Level1Draw(ctx){
@@ -29,6 +31,21 @@ function Level1Draw(ctx){
 	ctx.globalAlpha = oldAlpha;
   	ctx.fillText(this.curWord, 100, 100);
 
+	if(this.showButtons){
+		ctx.globalAlpha = 0.5;
+		ctx.fillStyle = "blue";
+    		ctx.fillRect(225,200,100,100);
+
+		ctx.fillStyle = "green";
+    		ctx.fillRect(325,200,100,100);
+
+		ctx.fillStyle = "white";
+		ctx.fillText("Wake", 250,250);
+		ctx.fillText("Sleep", 350,250);
+
+		ctx.globalAlpha = oldAlpha;	
+	}
+	
 	ctx.fillStyle = oldColor;
 	ctx.font = oldFont;
 }
@@ -41,7 +58,24 @@ function Level1Update(){
 	this.curText = splitWordsGetRest(this.curText);
 }
 
+function Level1ActivateButtons(){
+	this.showButtons = true;
+}
+
 function Level1Click(_x,_y){
+	// If we choose to wake then we need to set the level accordingly
+	/*	ctx.fillRect(225,200,100,100);
+*/
+	if(_x>225 && _x<325 && _y>200 && _y<300 ){
+		this.owner.setLevel("FirstHurdle");
+		return;
+	}
+
+	// If we choose to sleep then we can enjoy this adventure...
+/*
+		ctx.fillStyle = "green";
+    		ctx.fillRect(325,200,100,100);
+*/
 
 }
 
@@ -51,5 +85,5 @@ function Level1MouseMove(_x,_y){
 function Level1See(){
 	// initiate the see
 	this.curText = "The room looks odd - the bed I'm in smells of pizza. I wonder if I should rollover and go to sleep or wake and never dream again?";
-
+	this.activateButtons();
 }
