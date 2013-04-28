@@ -9,7 +9,7 @@ function Level2(_owner){
 	this.click = Level2Click;
 	this.owner = _owner;
 	this.see = Level2See;
-	this.curText = "The roar of the crowd hits me first. I'm in a bar - the air is thick with the smell of sweat. I'm behind the bar, people are shouting for drinks.";
+	this.curText = "The roar of the crowd hits you first. You're in a bar - the air is thick with the smell of sweat. You're behind the bar, people are shouting for drinks.";
 	
 	this.oldWord = "";	
 	this.curWord = "";	
@@ -165,7 +165,7 @@ function Level2Click(_x,_y){
 				this.curText = "Drinking would be a bad idea right now";
 				this.owner.addScore(-1);
 			}else{
-				this.curText = "As much as I'd like a drink right now I think I'm supposed to be working";
+				this.curText = "As much as you'd like a drink right now you are supposed to be working";
 				this.triedDrink = true;
 			}
 		}
@@ -191,16 +191,16 @@ function Level2See(){
 	
 	if(this.seeCount==0){
 		this.owner.addScore(5);
-		this.curText = "I see a bottle on the bar - there is something strange about it";
+		this.curText = "You see a bottle on the bar - there is something strange about it";
 		this.bottleVisible=true;
 		this.labelVisible = true;
 		
 		this.seeCount += 1;
 	}else if(this.seeCount == 1){
 		this.seeCount += 1;
-		this.curText = "The bottle seems to draw my attention";
+		this.curText = "The bottle seems to draw your attention";
 	}else{
-		this.curText = "The bottle seems to draw my attention";
+		this.curText = "The bottle really should draw your attention";
 		this.owner.addScore(-1);
 	}
 }

@@ -5,10 +5,14 @@ function Game(){
 	this.update = GameUpdate;
 	this.click = GameClick;
 	this.mouseMove = GameMouseMove;
-	this.curLevel = new Level3(this);
+	this.curLevel = new Level1(this);
 	
 	this.tick = MAX_TICK;
 	this.setLevel = GameSetLevel;
+	
+	this.eyeIcon = new Image();
+	this.eyeIcon.src = "./img/eye-icon.png";
+	this.highlightEye = false;
 	
 	this.addScore = GameUpdateScore;
 	this.score = 0;
@@ -20,11 +24,12 @@ function GameDraw(ctx){
 
 	var oldAlpha = ctx.globalAlpha;
 
-	ctx.globalAlpha = 0.5;
+	if(!this.highlightEye)
+		ctx.globalAlpha = 0.5;
 
-	ctx.fillStyle = "blue";
-    	ctx.fillRect(0,0,50,50);
-
+	//ctx.fillStyle = "blue";
+    //ctx.fillRect(0,0,50,50);
+	ctx.drawImage(this.eyeIcon,0,0);
 	
 	//Draw the score pic if we need to
 	if(this.scorePic!=null){
@@ -56,7 +61,7 @@ function GameUpdate(){
 		if(this.scorePic.timer<0){
 			this.scorePic = null;
 		}else{
-			this.scorePic.loc.y += 3;
+			this.scorePic.loc.y += 1;
 		}
 	}
 	
@@ -75,6 +80,12 @@ function GameClick(_x,_y){
 }
 
 function GameMouseMove(_x,_y){
+	if(_x>0&&_x<50&&_y>0&&_y<50){
+		this.highlightEye = true;
+	}else{
+		this.highlightEye = false;
+	}
+
 	this.curLevel.mouseMove(_x,_y);
 }
 
@@ -87,6 +98,8 @@ function GameSetLevel(_name){
 		this.curLevel = new Level2(this);
 	}else if(_name=="Level3"){
 		this.curLevel = new Level3(this);
+	}else if(_name=="Level4"){
+		this.curLevel = new FinalLevel(this);
 	}
 }
 
@@ -94,7 +107,7 @@ function GameUpdateScore(_val){
 	this.score += _val;
 	this.scorePic = new Object();
 	this.scorePic.val = _val;
-	this.scorePic.timer = 10;
+	this.scorePic.timer = 30;
 	this.scorePic.loc = new Location(80,20);
 }
 

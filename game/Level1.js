@@ -5,12 +5,14 @@ function Level1(_owner){
 	this.click = Level1Click;
 	this.owner = _owner;
 	this.see = Level1See;
-	this.curText = "I wake up early in the morning";
+	this.curText = "You wake up early in the morning";
 	
 	this.oldWord = "";	
 	this.curWord = "";	
 	this.nextWord = "";
 		
+	this.curLoc = new Location(0,0);
+	
 	this.activateButtons = Level1ActivateButtons;
 	this.showButtons=false;
 }
@@ -32,15 +34,24 @@ function Level1Draw(ctx){
   	ctx.fillText(this.curWord, 100, 100);
 
 	if(this.showButtons){
-		ctx.globalAlpha = 0.5;
+		
+		if(this.curLoc.x>225&&this.curLoc.x<325&&this.curLoc.y>200&&this.curLoc.y<300)
+			ctx.globalAlpha=0.5;
+		
 		ctx.fillStyle = "blue";
-    		ctx.fillRect(225,200,100,100);
-
-		ctx.fillStyle = "green";
-    		ctx.fillRect(325,200,100,100);
-
+    	ctx.fillRect(225,200,100,100);
+		
 		ctx.fillStyle = "white";
 		ctx.fillText("Wake", 250,250);
+		ctx.globalAlpha = 1.0;
+		
+		if(this.curLoc.x>325&&this.curLoc.x<425&&this.curLoc.y>200&&this.curLoc.y<300)
+			ctx.globalAlpha=0.5;
+
+		ctx.fillStyle = "green";
+    	ctx.fillRect(325,200,100,100);
+		
+		ctx.fillStyle = "white";
 		ctx.fillText("Sleep", 350,250);
 
 		ctx.globalAlpha = oldAlpha;	
@@ -87,10 +98,12 @@ function Level1Click(_x,_y){
 }
 
 function Level1MouseMove(_x,_y){
+	this.curLoc.x = _x;
+	this.curLoc.y = _y;
 }
 
 function Level1See(){
 	// initiate the see
-	this.curText = "The room looks odd - the bed I'm in smells of pizza. I wonder if I should rollover and go to sleep or wake and never dream again?";
+	this.curText = "The room looks odd - the bed you are in smells of pizza. You wonder if you should rollover and go to sleep or wake and never dream again?";
 	this.activateButtons();
 }
