@@ -92,6 +92,8 @@ function GameSetLevel(_name){
 		this.curLevel = new Level1(this);
 	}else if(_name=="Level2"){
 		this.curLevel = new Level2(this);
+	}else if(_name=="Level3"){
+		this.curLevel = new Level3(this);
 	}
 }
 
