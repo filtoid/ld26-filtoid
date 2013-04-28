@@ -5,7 +5,7 @@ function FinalLevel(_owner){
 	this.click = FLClick;
 	this.owner = _owner;
 	this.see = FLSee;
-	this.TEXT = "You stir from your dream. Waking hours to compliment the dreaming - a life to live.";
+	this.TEXT = "You stir from your dream. Waking hours to complement the dreaming - a life to live.";
 	
 	this.curText = this.TEXT;
 	

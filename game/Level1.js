@@ -104,6 +104,6 @@ function Level1MouseMove(_x,_y){
 
 function Level1See(){
 	// initiate the see
-	this.curText = "The room looks odd - the bed you are in smells of pizza. You wonder if you should rollover and go to sleep or wake and never dream again?";
+	this.curText = "The room looks odd - the bed you are in smells of pizza. You wonder if you should roll over and go to sleep or wake and never dream again?";
 	this.activateButtons();
 }
