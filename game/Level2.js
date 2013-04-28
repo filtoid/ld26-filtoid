@@ -11,6 +11,7 @@ function Level2(_owner){
 	this.curWord = "";	
 	this.nextWord = "";
 		
+	this.seeCount = 0;
 	this.activateButtons = Level1ActivateButtons;
 	this.showButtons=false;
 }
@@ -39,8 +40,7 @@ function Level2Draw(ctx){
 		ctx.fillStyle="blue";
 		ctx.fillRect(300,50,200,100);
 		ctx.fillStyle = "white";
-		ctx.fillText("Restart", 350,75);
-		
+		ctx.fillText("Restart", 350,75);		
 	}
 	
 	ctx.fillStyle = oldColor;
@@ -64,5 +64,15 @@ function Level2Click(_x,_y){
 }
 
 function Level2See(){
-
+	if(this.seeCount==0){
+		this.owner.addScore(5);
+		this.curText = "I see a bottle on the bar - there is something strange about it";
+		this.seeCount += 1;
+	}else if(this.seeCount == 1){
+		this.seeCount += 1;
+		this.curText = "The bottle seems to draw my attention";
+	}else{
+		this.curText = "The bottle seems to draw my attention";
+		this.owner.addScore(-1);
+	}
 }
