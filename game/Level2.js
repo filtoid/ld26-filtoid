@@ -101,6 +101,15 @@ function Level2Draw(ctx){
 }
 
 function Level2Update(){
+
+	// To Slow the ticks down to a readable speed
+	if(this.owner.tick<=0){
+		this.owner.tick=MAX_TICK;		
+	}else{
+		this.owner.tick-=1;
+		return;	
+	}
+
 	this.oldWord = this.curWord;
 	this.curWord = this.nextWord;
 	

@@ -51,6 +51,14 @@ function Level1Draw(ctx){
 }
 
 function Level1Update(){
+	
+	if(this.owner.tick<=0){
+		this.owner.tick=MAX_TICK;		
+	}else{
+		this.owner.tick-=1;
+		return;	
+	}
+
 	this.oldWord = this.curWord;
 	this.curWord = this.nextWord;
 	

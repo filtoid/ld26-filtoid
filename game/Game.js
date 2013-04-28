@@ -5,7 +5,7 @@ function Game(){
 	this.update = GameUpdate;
 	this.click = GameClick;
 	this.mouseMove = GameMouseMove;
-	this.curLevel = new Level1(this);
+	this.curLevel = new Level3(this);
 	
 	this.tick = MAX_TICK;
 	this.setLevel = GameSetLevel;
@@ -50,13 +50,6 @@ function GameDraw(ctx){
 }
 
 function GameUpdate(){
-
-	if(this.tick<=0){
-		this.tick=MAX_TICK;		
-	}else{
-		this.tick-=1;
-		return;	
-	}
 
 	if(this.scorePic!=null){
 		this.scorePic.timer-=1;
